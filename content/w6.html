@@ -142,65 +142,77 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='w6.html'>Next</a> >> w6<br /><h1>w5</h1>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+    <div id="tipue_search_content">w5 << <a href='w5.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>w6</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
+// cc roc_flag.c -lgd -lm to link with gd and math library
+// https://www.rapidtables.com/web/color/RGB_Color.html
+// 撟曆�訫耦����𡑒𠧧���鼓��𣇉毀蝧�
+// 隞乩�� gd 蝜芸�𣇉�见�誩�𡑒岫�𧞄�枂 ROC ��𧢲��, 隢𧢲覔��帋�见�㛖�见�誩�批捆摰峕�𣂼�𣬚�𣬚���𧢲�㛖鼓���
+#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+
+void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);
 
 int main() {
-    // Open a file to write displacement and velocity data
-    FILE *outputFile = fopen("motion_data.txt", "w");
-    if (!outputFile) {
-        fprintf(stderr, "Failed to create data file.\n");
+    // width 3: height 2
+    int width = 1200;
+    int height = (int)(width*2.0 / 3.0);
+
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+
+    draw_roc_flag(img);
+
+    FILE *outputFile = fopen("./../images/roc_flag1.png", "wb");
+    if (outputFile == NULL) {
+        fprintf(stderr, "Error opening the output file.\n");
         return 1;
     }
-
-    // Simulate motion for 10 seconds and calculate displacement and velocity, while writing data to the file
-    double x = 0.2;  // Initial displacement
-    double v = 0.0;  // Initial velocity
-    double dt = 0.01; // Time step
-    double t = 0.0;  // Time
-
-    while (t &lt;= 10.0) {
-        double acceleration = (-10.0 * x - 0.5 * v) / 1.0; // Modified system parameters here
-        v += acceleration * dt;
-        x += v * dt;
-
-        fprintf(outputFile, "%lf %lf %lf\n", t, x, v);
-
-        t += dt;
-    }
-
-    // Close the data file
+    gdImagePngEx(img, outputFile, 9);
     fclose(outputFile);
-
-    // Start a Gnuplot process using popen
-    FILE *gnuplotPipe = popen("gnuplot -persistent", "w");
-    if (!gnuplotPipe) {
-        fprintf(stderr, "Failed to start Gnuplot.\n");
-        return 1;
-    }
-
-    // Use Gnuplot plotting commands, specify font and output as PNG
-    fprintf(gnuplotPipe, "set terminal pngcairo enhanced font 'default,10' size 800,400\n");
-    fprintf(gnuplotPipe, "set output 'motion_plot.png'\n");
-    fprintf(gnuplotPipe, "set title 'Displacement and Velocity vs. Time'\n");
-    fprintf(gnuplotPipe, "set xlabel 'Time (s)'\n");
-    fprintf(gnuplotPipe, "set ylabel 'Displacement (m)'\n");
-    fprintf(gnuplotPipe, "plot 'motion_data.txt' using 1:2 with lines lw 2 title 'Displacement', \
-                             'motion_data.txt' using 1:3 with lines lw 2 title 'Velocity'\n");
-
-    // Close the Gnuplot process
-    fprintf(gnuplotPipe, "exit\n");
-    pclose(gnuplotPipe);
-
+    gdImageDestroy(img);
     return 0;
+}
+
+void draw_roc_flag(gdImagePtr img) {
+    int width = gdImageSX(img);
+    int height = gdImageSY(img);
+    int red, white, blue;
+    int center_x = (int)(width/4);
+    int center_y = (int)(height/4);
+    int sun_radius = (int)(width/8);
+    // Colors for the flag
+    red = gdImageColorAllocate(img, 242, 0, 0); // Red color
+    white = gdImageColorAllocate(img, 255, 255, 255); // White stripes
+    blue = gdImageColorAllocate(img, 0, 41, 204); // Blue
+    // red rectangle area
+    gdImageFilledRectangle(img, 0, 0, width, height, red);
+    // blue rectangle area
+    gdImageFilledRectangle(img, 0, 0, (int)(width/2.0), (int)(height/2.0), blue);
+    // �𤌍��滚���𧞄�枂��鍦予�蒾�𠯫��頛芸�梶凒蝺�, 隢见�𡑒岫閮��埈�����暺𧼮漣璅坔�峕�𣂼�𧢲�㛖鼓���
+    draw_white_sun(img, center_x, center_y, sun_radius, white);
+}
+
+void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int color) {
+    float angle = 0;
+    int fromX, fromY;
+    int toX, toY;
+    for (int i=0; i&lt;24; i++){
+        angle += 5*M_PI*2/12;
+        //printf("%.3f", angle);
+        toX = center_x + cos(angle)*sun_radius;
+        toY = center_y + sin(angle)*sun_radius;
+        // �蘨��� i �� 0 ��蝘餃�訫� toX, toY, �園�㗛�賡�脰�𣬚凒蝺𡁶鼓���
+        if (i!=0){
+            gdImageLine(img, fromX, fromY, toX, toY, color);
+        }
+        fromX = toX;
+        fromY = toY;
+   }
 }</pre>
-<p>clear</p>
-<p>cd downloads</p>
-<p>cc gnuplot_ex1.c</p>
-<p>./a.out</p>
-<p></p>
-<p><img alt="" height="200" src="./../images/motion_plot.png" width="400"/></p>
-<br />About << <a href='About.html'>Previous</a> <a href='w6.html'>Next</a> >> w6</div>
+<p><img alt="" height="267" src="./../images/roc_flag1.png" width="400"/></p><br />w5 << <a href='w5.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">

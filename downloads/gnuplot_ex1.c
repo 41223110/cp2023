@@ -14,7 +14,7 @@ int main() {
     double dt = 0.01; // Time step
     double t = 0.0;  // Time
 
-    while (t <= 10.0) {
+    whilce (t <= 10.0) {
         double acceleration = (-10.0 * x - 0.5 * v) / 1.0; // Modified system parameters here
         v += acceleration * dt;
         x += v * dt;
