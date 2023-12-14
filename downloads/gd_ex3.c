@@ -43,6 +43,6 @@ void draw_japan_flag(gdImagePtr img, int width, int height) {
     int radius = (int)(width * 3.0 / 10.0);
 
     // 繪製紅色圓（太陽）
-    gdImageFilledEllipse(img, center_x, center_y, radius * 0.1, radius * 0.1, red);
+    gdImageFilledEllipse(img, center_x, center_y, radius * 1.2, radius * 1.2, red);
 }
 
