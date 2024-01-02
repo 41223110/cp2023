@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,9 +142,108 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w12 << <a href='w12.html'>Previous</a> <a href='w15.html'>Next</a> >> w15<br /><h1>w13</h1>
-<p><span>這是我第一次接觸到</span><span>GitHub</span><span>與</span><span>Replit</span><span>。前幾堂課我其實不懂要做什麼也很怕做錯一步就要全部重來，導致我前幾週都處在混亂之中，只能反覆觀看老師所錄製的上課內容並一步一步的做，但在上了越來越多次課程之後我發現其實沒有我想像中的難，只要花時間去了解其實就不難了，從一開始的網路設定與網頁架設和之後的維護網站，都是需要花費時間才能完成的，雖然過程中遇到了不少的問題但在藉由同學和老師的幫助下也完成了許多關於網路和程式相關的設定與了解。</span></p>
-<br />w12 << <a href='w12.html'>Previous</a> <a href='w15.html'>Next</a> >> w15</div>
+    <div id="tipue_search_content">w15 << <a href='w15.html'>Previous</a> <a href='2.html'>Next</a> >> 2<br /><h1>1</h1>
+<p><span>直接在青天與滿地紅的圖案中, 利用白色作為畫線顏色, 將第二組的 ABED 等四個點的座標, 以直線相連</span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+    
+void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);
+    
+//void connectPoints(gdImagePtr img, int x1, int y1, int x2, int y2, int color);
+    
+int main() {
+// width 3: height 2
+int width = 1200;
+// 國旗長寬比為 3:2
+int height = (int)(width * 2.0 / 3.0);
+    
+gdImagePtr img = gdImageCreateTrueColor(width, height);
+gdImageAlphaBlending(img, 0);
+    
+draw_roc_flag(img);
+    
+FILE *outputFile = fopen("Y:/tmp/c_ex/roc_02.png", "wb");
+if (outputFile == NULL) {
+fprintf(stderr, "Error opening the output file.\n");
+return 1;
+}
+gdImagePngEx(img, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(img);
+return 0;
+}
+    
+void draw_roc_flag(gdImagePtr img) {
+int width = gdImageSX(img);
+int height = gdImageSY(img);
+int red, white, blue;
+// 白日位於青天面積正中央, 因此中心點座標為長寬各 1/4 處
+int center_x = (int)(width / 4);
+int center_y = (int)(height / 4);
+// gdImageFilledEllipse 需以長寬方向的 diameter 作圖
+// 由於中央白日圓形的半徑為青天寬度的 1/8
+// 因此中央白日圓形的直徑為青天寬度的 1/4, 也就是國旗寬度的 1/8
+// 而且白日十二道光芒的外圍圓形其半徑也是國旗寬度的1/8
+int sun_radius = (int)(width / 8);
+// 中央白日圓形的直徑等於十二道光芒外圍圓形的半徑
+int white_circle_dia = sun_radius;
+// 中央藍色圓形半徑為中央白日的 1又 2/15
+int blue_circle_dia = white_circle_dia + white_circle_dia * 2 / 15;
+// 根據 https://www.moi.gov.tw/cp.aspx?n=10621 訂定國旗三種顏色值
+red = gdImageColorAllocate(img, 255, 0, 0); // 紅色
+white = gdImageColorAllocate(img, 255, 255, 255); // 白色
+blue = gdImageColorAllocate(img, 0, 0, 149); // 藍色
+// 根據畫布大小塗上紅色長方形區域
+gdImageFilledRectangle(img, 0, 0, width, height, red);
+// 青天面積為整面國旗的 1/4, 也是採用長方形塗色
+gdImageFilledRectangle(img, 0, 0, (int)(width / 2.0), (int)(height / 2.0), blue);
+// 先設法以填色畫出六個白色堆疊菱形
+//draw_white_sun(img, center_x, center_y, sun_radius, white);
+// 利用一個藍色大圓與白色小圓畫出藍色環狀
+//gdImageFilledEllipse(img, center_x, center_y, blue_circle_dia, blue_circle_dia, blue);
+//gdImageFilledEllipse(img, center_x, center_y, white_circle_dia, white_circle_dia, white);
+  
+  {int x1 = 429;
+   int y1 = 125;
+   int x2 = 279;
+   int y2 = 165;
+   
+   // 畫第一條線連接兩個點(AB)
+   gdImageLine(img, x1, y1, x2, y2, white);
+  }
+  {int x1 = 170;
+     int y1 = 274;
+     int x2 = 279;
+     int y2 = 165;
+   
+     // 畫第二條線連接兩個點(EB)
+     gdImageLine(img, x1, y1, x2, y2, white);
+  }
+  {
+    int x1 = 170;
+     int y1 = 274;
+     int x2 = 319;
+     int y2 = 234;
+       
+   // 畫第三條線連接兩個點(ED)
+     gdImageLine(img, x1, y1, x2, y2, white);
+  }
+  {
+    int x1 = 319;
+     int y1 = 234;
+     int x2 = 429;
+     int y2 = 125;
+       
+     // 畫第四條線連接兩個點(DA)
+     gdImageLine(img, x1, y1, x2, y2, white);
+  }
+}
+//void connectPoints(gdImagePtr img, int x1, int y1, int x2, int y2, int color) {
+//gdImageLine(img, x1, y1, x2, y2, color);</pre>
+<p><span><img alt="" height="267" src="./../images/exam_flag.png" width="400"/></span></p>
+<br />w15 << <a href='w15.html'>Previous</a> <a href='2.html'>Next</a> >> 2</div>
         
     <!-- footer -->
       <div class="container">
