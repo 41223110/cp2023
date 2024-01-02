@@ -839,6 +839,74 @@ if (outputFile == NULL) {
   }</pre>
 <p><img alt="" height="267" src="/images/korea_flag.png" width="400"/></p>
 <h1>w12</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+#include &lt;gd.h&gt;
+#include &lt;math.h&gt;
+  
+int main() {
+    int width = 800;
+    int height = 600;
+  
+    gdImagePtr img = gdImageCreateTrueColor(width, height);
+    gdImageAlphaBlending(img, 0);
+  
+    FILE *outputFile = fopen("hellogd.png", "wb");
+    if (outputFile == NULL) {
+  
+fprintf(stderr, "Error opening the output file.\n");
+  
+return 1;
+    }
+  
+    int red = gdImageColorAllocate(img, 255, 0, 0);
+    int blue = gdImageColorAllocate(img, 0, 0, 255);
+    int black = gdImageColorAllocate(img, 0, 0, 0);
+    int white = gdImageColorAllocate(img, 255, 255, 255);
+    // 長方形塗色
+    gdImageFilledRectangle(img, 0, 0, width, height, white);
+    gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, blue);
+    // 橢圓形塗色
+    gdImageFilledEllipse(img, (int)width*3/4, (int)height/4, (int)width/4, (int)width/4, red);
+    // 橢圓形畫線
+    gdImageEllipse(img, (int)width*3/4, (int)height*3/4, (int)width/4, (int)width/4, red);
+    // 畫直線
+    gdImageLine(img, (int)width/2, (int)height/2, (int)width/2, (int)height/2 + 100, blue);
+  
+    // 多邊形畫線
+    gdPoint points[4];
+    points[0].x = (int)width/4;
+    points[0].y = (int)height*3/4;
+    points[1].x = points[0].x + 100;
+    points[1].y = points[0].y;
+    points[2].x = points[1].x;
+    points[2].y = points[1].y + 100;
+    points[3].x = points[2].x - 100;
+    points[3].y = points[2].y;
+    gdImagePolygon(img, points, 4, black);
+  
+    // 多邊形塗色
+    gdPoint points2[4];
+    points2[0].x = (int)width/3;
+    points2[0].y = (int)height/2;
+    points2[1].x = points2[0].x + 100;
+    points2[1].y = points2[0].y;
+    points2[2].x = points2[1].x;
+    points2[2].y = points2[1].y + 100;
+    points2[3].x = points2[2].x - 150;
+    points2[3].y = points2[2].y;
+    gdImageFilledPolygon(img, points2, 4, red);
+  
+    gdImagePngEx(img, outputFile, 9);
+    fclose(outputFile);
+    gdImageDestroy(img);
+    return 0;
+}</pre>
+<p></p>
+<p>另存至Y槽 home_ipv6，檔名最後要加.c</p>
+<p><img alt="" height="425" src="/images/2.jpg" width="499"/></p>
+<p>圖檔會出現在home_ipv6(png檔)</p>
+<p><img alt="" height="300" src="/images/1.png" width="400"/></p>
+<p></p>
 <p></p><h1>w13</h1>
 <p><span>這是我第一次接觸到</span><span>GitHub</span><span>與</span><span>Replit</span><span>。前幾堂課我其實不懂要做什麼也很怕做錯一步就要全部重來，導致我前幾週都處在混亂之中，只能反覆觀看老師所錄製的上課內容並一步一步的做，但在上了越來越多次課程之後我發現其實沒有我想像中的難，只要花時間去了解其實就不難了，從一開始的網路設定與網頁架設和之後的維護網站，都是需要花費時間才能完成的，雖然過程中遇到了不少的問題但在藉由同學和老師的幫助下也完成了許多關於網路和程式相關的設定與了解。</span></p><h1>Brython</h1>
 <p><a href="https://en.wikipedia.org/wiki/Python_(programming_language)">https://en.wikipedia.org/wiki/Python_(programming_language)</a></p>
