@@ -74,7 +74,7 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
     float sr = sun_radius/tan(75*deg);
     int ax, ay, bx, by, dx, dy, ex, ey;
     gdPoint points[4];
-   
+
     ax = center_x;
     ay = center_y - sun_radius;
     bx = center_x - sun_radius*tan(15*deg);

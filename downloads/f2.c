@@ -16,7 +16,7 @@ int main() {
 
     draw_roc_flag(img);
 
-    FILE *outputFile = fopen("roc_flag.png", "wb");
+    FILE *outputFile = fopen("roc_flag2.png", "wb");
     if (outputFile == NULL) {
         fprintf(stderr, "Error opening the output file.\n");
         return 1;
@@ -61,8 +61,9 @@ void draw_roc_flag(gdImagePtr img) {
     int sun_center_y = (int)(height / 4);
     int sun_radius = (int)(width / 8);
 
-    // Draw sun's circle
-    gdImageFilledEllipse(img, sun_center_x, sun_center_y, sun_radius * 2, sun_radius * 2, white);
+    // Draw sun's circle with reduced radius
+    int new_sun_radius = sun_radius / 2;
+    gdImageFilledEllipse(img, sun_center_x, sun_center_y, new_sun_radius * 2, new_sun_radius * 2, white);
 
     int intersection1_x, intersection1_y;
     int intersection2_x, intersection2_y;
@@ -70,10 +71,10 @@ void draw_roc_flag(gdImagePtr img) {
     int intersection4_x, intersection4_y;
 
     // Calculate intersections
-    lineCircleIntersection(A_x, A_y, B_x, B_y, sun_center_x, sun_center_y, sun_radius, &intersection1_x, &intersection1_y);
-    lineCircleIntersection(B_x, B_y, E_x, E_y, sun_center_x, sun_center_y, sun_radius, &intersection2_x, &intersection2_y);
-    lineCircleIntersection(E_x, E_y, D_x, D_y, sun_center_x, sun_center_y, sun_radius, &intersection3_x, &intersection3_y);
-    lineCircleIntersection(D_x, D_y, A_x, A_y, sun_center_x, sun_center_y, sun_radius, &intersection4_x, &intersection4_y);
+    lineCircleIntersection(A_x, A_y, B_x, B_y, sun_center_x, sun_center_y, new_sun_radius, &intersection1_x, &intersection1_y);
+    lineCircleIntersection(B_x, B_y, E_x, E_y, sun_center_x, sun_center_y, new_sun_radius, &intersection2_x, &intersection2_y);
+    lineCircleIntersection(E_x, E_y, D_x, D_y, sun_center_x, sun_center_y, new_sun_radius, &intersection3_x, &intersection3_y);
+    lineCircleIntersection(D_x, D_y, A_x, A_y, sun_center_x, sun_center_y, new_sun_radius, &intersection4_x, &intersection4_y);
 
     printf("Intersection 1: (%d, %d)\n", intersection1_x, intersection1_y);
     printf("Intersection 2: (%d, %d)\n", intersection2_x, intersection2_y);
