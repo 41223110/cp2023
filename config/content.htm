@@ -1,7 +1,40 @@
 <h1>About</h1>
 <p><a href="https://github.com/41223110/cp2023">https://github.com/41223110/cp2023</a>(個人)</p>
 <p><a href="https://github.com/hong41223129/cp2023_ag4">https://github.com/hong41223129/cp2023_ag4</a>(小組)</p><h1>w2</h1>
-<h1>w5</h1>
+<p><span>簡單的 C 程式，必須存成.c的附檔名，因為這個編輯器是透過副檔名來判定拿哪一個系統來處理你的程式</span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+ 
+int main(void) {
+  printf("Hello World中文\n");
+  return 0;
+}</pre>
+<p><span>請利用重複迴圈列印出十行相同字串</span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main(void) {
+    // 設定迴圈執行10次
+    for (int i = 0; i &lt; 10; i++) {
+        // 在每次迴圈中列印相同字串
+        printf("Hello World中文\n");
+    }
+
+    return 0;
+}
+</pre>
+<p><span>可不可以連同i變數列印出來</span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+
+int main(void) {
+    // 設定迴圈執行10次
+    for (int i = 0; i &lt; 10; i++) {
+        // 在每次迴圈中列印相同字串與 i 變數的值
+        printf("Hello World中文 - Line %d\n", i + 1);
+    }
+
+    return 0;
+}
+</pre>
+<p></p><h1>w5</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 
 int main() {
