@@ -143,7 +143,13 @@ img.add_border {
           
         </header>
     <div id="tipue_search_content">w6 << <a href='w6.html'>Previous</a> <a href='w7.html'>Next</a> >> w7<br /><h1>說明基本 gd 繪圖</h1>
-<p><span><strong><code>void</code></strong><span><strong> ：</strong><span><span> </span></span>主要用於表示某個地方不返回任何值，包括函數的返回類型。</span></span></p>
+<p>#include &lt;stdio.h&gt; :寫檔案用的 </p>
+<p><span>#include &lt;gd.h&gt;:用來創建、著色</span></p>
+<p>#include &lt;math.h&gt;:數學運算的函數，例如三角函數</p>
+<p><span><strong><code>void</code></strong><span><strong> ：</strong><span><span> </span></span>主要用於表示某個地方不返回任何值，包括函數的返回類型。函數聲明:</span></span></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">void draw_roc_flag(gdImagePtr img);
+void draw_white_sun(gdImagePtr img, int x, int y, int size, int color);
+</pre>
 <p><span><span><strong><code>int</code>：</strong><span> 這表示 </span><code>main</code><span> 函數將返回一個整數值。這個整數值通常用於指示程序的執行狀態，一般來說，返回 </span><code>0</code><span> 表示程序正常結束，而其他的返回值可能表示程序發生了某種錯誤。被用来聲明整數變量</span></span></span></p>
 <p><span><span><span><strong><code>main</code>：</strong><span> 這是C++程序的主函數。程序的執行從這個函數開始。所有的代碼都在 </span><code>main</code><span> 函數內執行。</span></span></span></span></p>
 <p><span><span><span><span><strong><code>int</code>：</strong>被用来聲明整數變量，例:</span></span></span></span></p>
@@ -153,6 +159,9 @@ img.add_border {
 </pre>
 <p>或</p>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int age = 25; // 聲明並初始化一個整數變量 age，初始值為 25
+</pre>
+<p>文件輸出：</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">FILE *outputFile = fopen("./../images/roc_flag_in_gd.png", "wb");
 </pre>
 <p><br/><br/><br/><br/></p>
 <p><span><span><span><span> </span></span></span></span></p><br />w6 << <a href='w6.html'>Previous</a> <a href='w7.html'>Next</a> >> w7</div>
