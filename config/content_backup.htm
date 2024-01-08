@@ -404,8 +404,17 @@ void draw_japan_flag(gdImagePtr img, int width, int height) {
 <p><img alt="" height="256" src="/images/japan_flag_in_gd.png" width="384"/></p>
 <h2>說明基本 gd 繪圖</h2>
 <p><span><strong><code>void</code></strong><span><strong> ：</strong><span><span> </span></span>主要用於表示某個地方不返回任何值，包括函數的返回類型。</span></span></p>
-<p><span><span><strong><code>int</code>：</strong><span> 這表示 </span><code>main</code><span> 函數將返回一個整數值。這個整數值通常用於指示程序的執行狀態，一般來說，返回 </span><code>0</code><span> 表示程序正常結束，而其他的返回值可能表示程序發生了某種錯誤。</span></span></span></p>
-<p><span><span><span><strong><code>main</code>：</strong><span> 這是C++程序的主函數。程序的執行從這個函數開始。所有的代碼都在 </span><code>main</code><span> 函數內執行。</span></span></span></span></p><h1>w7</h1>
+<p><span><span><strong><code>int</code>：</strong><span> 這表示 </span><code>main</code><span> 函數將返回一個整數值。這個整數值通常用於指示程序的執行狀態，一般來說，返回 </span><code>0</code><span> 表示程序正常結束，而其他的返回值可能表示程序發生了某種錯誤。被用来聲明整數變量</span></span></span></p>
+<p><span><span><span><strong><code>main</code>：</strong><span> 這是C++程序的主函數。程序的執行從這個函數開始。所有的代碼都在 </span><code>main</code><span> 函數內執行。</span></span></span></span></p>
+<p><span><span><span><span><strong><code>int</code>：</strong>被用来聲明整數變量，例:</span></span></span></span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int age; // 聲明一個整數變量 age
+</pre>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">age = 25; // 將整數值 25 赋给 age 變量
+</pre>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int age = 25; // 聲明並初始化一個整數變量 age，初始值為 25
+</pre>
+<p><br/><br/><br/><br/></p>
+<p><span><span><span><span> </span></span></span></span></p><h1>w7</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
@@ -1157,7 +1166,7 @@ int main() {
 
     draw_roc_flag(img);
 
-    FILE *outputFile = fopen("roc_flag_in_gd.png", "wb");
+    FILE *outputFile = fopen("roc_flag.png", "wb");
     if (outputFile == NULL) {
         fprintf(stderr, "Error opening the output file.\n");
         return 1;
@@ -1195,8 +1204,7 @@ void draw_roc_flag(gdImagePtr img) {
     gdImageLine(img, B_x, B_y, E_x, E_y, white);
     gdImageLine(img, E_x, E_y, D_x, D_y, white);
     gdImageLine(img, D_x, D_y, A_x, A_y, white);
-}
-</pre>
+}</pre>
 <p><img alt="" height="267" src="/images/roc_flag.png" width="400"/></p>
 <p></p>
 <p></p><h2>2</h2>
