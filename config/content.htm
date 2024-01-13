@@ -402,7 +402,15 @@ void draw_japan_flag(gdImagePtr img, int width, int height) {
     gdImageFilledEllipse(img, center_x, center_y, radius * 1.2, radius * 1.2, red);
 }</pre>
 <p><img alt="" height="256" src="/images/japan_flag_in_gd.png" width="384"/></p>
-<h2>說明基本 gd 繪圖</h2>
+<h2>GD 圖形庫中的函數</h2>
+<ol>
+<li>gdImagePtr:是 GD 圖形庫中表示圖像的數據結構指針類型。通常，你會使用 gdImageCreateTrueColor 等函數來創建一個 gdImagePtr。</li>
+<li>gdImageAlphaBlending:是 GD 圖形庫中的函數，用於啟用或禁用圖像的 alpha 混合。如果啟用了 alpha 混合，將會考慮顏色的 alpha 通道（透明度）。</li>
+<li>gdImagePngEx:用於將 GD 圖像保存為 PNG 文件。</li>
+<li><span>gdImageColorAllocate:用於為圖像分配顏色。</span></li>
+<li>gdImageFilledPolygon:用於在圖像上繪製填充的多邊形。</li>
+<li>gdImagePolygon:用於在圖像上繪製多邊形輪廓。</li>
+</ol><h2>說明基本 gd 繪圖</h2>
 <p>#include &lt;stdio.h&gt; :寫檔案用的 。</p>
 <p><span>#include &lt;gd.h&gt;:用來創建、著色。</span></p>
 <p>#include &lt;math.h&gt;:數學運算的函數，例如三角函數。</p>
