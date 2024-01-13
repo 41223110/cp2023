@@ -483,7 +483,38 @@ void draw_single_diamond(gdImagePtr img, int center_x, int center_y, int sun_rad
     gdImagePolygon(img, points, 4, color);
 }
 </pre>
-<p><img alt="" height="267" src="/images/single_diamond.png" width="400"/></p><h2>GD 圖形庫中的函數</h2>
+<p><img alt="" height="267" src="/images/single_diamond.png" width="400"/></p>
+<p>這個函數首先計算菱形的各個點的坐標（A、B、E、D），然後使用這些坐標繪製一個填充的菱形。最後，使用 gdImageFilledPolygon 函數填充菱形區域，同時使用 gdImagePolygon 函數在菱形外圍畫線，以明確界定菱形的範圍。</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    ax = center_x;
+    ay = center_y - sun_radius;
+    bx = center_x - sun_radius * tan(15 * deg);
+    by = center_y;
+    ex = center_x;
+    ey = center_y + sun_radius;
+    dx = center_x + sun_radius * tan(15 * deg);
+    dy = center_y;</pre>
+<p>ax 和 ay：菱形的頂點 A 的坐標，其 x 坐標等於中心點的 center_x，y 坐標等於中心點 center_y 減去太陽半徑 sun_radius。</p>
+<p>bx 和 by：菱形的頂點 B 的坐標，其 x 坐標等於中心點的 center_x 減去太陽半徑 sun_radius 與角度 15 度的正切乘積，y 坐標等於中心點 center_y。</p>
+<p>ex 和 ey：菱形的頂點 E 的坐標，其 x 坐標等於中心點的 center_x，y 坐標等於中心點 center_y 加上太陽半徑 sun_radius。</p>
+<p>dx 和 dy：菱形的頂點 D 的坐標，其 x 坐標等於中心點的 center_x 加上太陽半徑 sun_radius 與角度 15 度的正切乘積，y 坐標等於中心點 center_y。</p>
+<p>這樣計算出的坐標可以用於繪製一個正菱形。</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    // A
+    points[0].x = ax + sun_radius * sin(30 * deg);
+    points[0].y = ay + sun_radius - sun_radius * cos(30 * deg);
+    // B
+    points[1].x = bx + sr - sr * cos(30 * deg);
+    points[1].y = by - sr * sin(30 * deg);
+    // E
+    points[2].x = ex - sun_radius * sin(30 * deg);
+    points[2].y = ey - (sun_radius - sun_radius * cos(30 * deg));
+    // D
+    points[3].x = dx - (sr - sr * cos(30 * deg));
+    points[3].y = dy + sr * sin(30 * deg);</pre>
+<p>points[0] 對應頂點 A，其 x 坐標等於 ax 加上 sun_radius 乘以角度為 30 度的正弦值，y 坐標等於 ay 加上 sun_radius 減去 sun_radius 乘以角度為 30 度的餘弦值。</p>
+<p>points[1] 對應頂點 B，其 x 坐標等於 bx 加上 sr 減去 sr 乘以角度為 30 度的餘弦值，y 坐標等於 by 減去 sr 乘以角度為 30 度的正弦值。</p>
+<p>points[2] 對應頂點 E，其 x 坐標等於 ex 減去 sun_radius 乘以角度為 30 度的正弦值，y 坐標等於 ey 減去 sun_radius 減去 sun_radius 乘以角度為 30 度的餘弦值。</p>
+<p>points[3] 對應頂點 D，其 x 坐標等於 dx 減去 sr 減去 sr 乘以角度為 30 度的餘弦值，y 坐標等於 dy 加上 sr 乘以角度為 30 度的正弦值。</p>
+<p>這樣就確定了繪製一個正菱形所需的四個頂點的坐標。</p><h2>GD 圖形庫中的函數</h2>
 <ol>
 <li>gdImagePtr:是 GD 圖形庫中表示圖像的數據結構指針類型。通常，你會使用 gdImageCreateTrueColor 等函數來創建一個 gdImagePtr。</li>
 <li>gdImageAlphaBlending:是 GD 圖形庫中的函數，用於啟用或禁用圖像的 alpha 混合。如果啟用了 alpha 混合，將會考慮顏色的 alpha 通道（透明度）。</li>
