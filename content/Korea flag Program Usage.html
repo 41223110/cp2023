@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='editing functions.html'>editing functions</a><li class='has-children'><a href='w2.html'>w2</a><ul class='dropdown'><li><a href='請逐行詳細說明程式用法.html'>請逐行詳細說明程式用法</a></li></ul><li><a href='w4.html'>w4</a><li><a href='w5.html'>w5</a><li class='has-children'><a href='w6.html'>w6</a><ul class='dropdown'><li><a href='Flag.html'>Flag</a><li><a href='ROC單一菱形.html'>ROC單一菱形</a><li><a href='GD 圖形庫中的函數.html'>GD 圖形庫中的函數</a><li><a href='說明基本 gd 繪圖.html'>說明基本 gd 繪圖</a></li></ul><li class='has-children'><a href='w7.html'>w7</a><ul class='dropdown'><li><a href='Korea flag Program Usage.html'>Korea flag Program Usage</a></li></ul><li><a href='w11.html'>w11</a><li><a href='w12.html'>w12</a><li class='has-children'><a href='w13.html'>w13</a><ul class='dropdown'><li><a href='心得.html'>心得</a></li></ul><li class='has-children'><a href='w15.html'>w15</a><ul class='dropdown'><li><a href='1.html'>1</a><li><a href='2.html'>2</a></li></ul><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='editing functions.html'>editing functions</a><li class='has-children'><a href='w2.html'>w2</a><ul class='dropdown'><li><a href='請逐行詳細說明程式用法.html'>請逐行詳細說明程式用法</a></li></ul><li><a href='w4.html'>w4</a><li><a href='w5.html'>w5</a><li class='has-children'><a href='w6.html'>w6</a><ul class='dropdown'><li><a href='Flag.html'>Flag</a><li><a href='ROC單一菱形.html'>ROC單一菱形</a><li><a href='GD 圖形庫中的函數.html'>GD 圖形庫中的函數</a><li><a href='說明基本 gd 繪圖.html'>說明基本 gd 繪圖</a></li></ul><li class='has-children'><a href='w7.html'>w7</a><ul class='dropdown'><li><a href='China flag Program Usage.html'>China flag Program Usage</a><li><a href='Korea flag Program Usage.html'>Korea flag Program Usage</a></li></ul><li><a href='w11.html'>w11</a><li><a href='w12.html'>w12</a><li class='has-children'><a href='w13.html'>w13</a><ul class='dropdown'><li><a href='心得.html'>心得</a></li></ul><li class='has-children'><a href='w15.html'>w15</a><ul class='dropdown'><li><a href='1.html'>1</a><li><a href='2.html'>2</a></li></ul><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,7 +142,50 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='w11.html'>Next</a> >> w11<br /><h1>Korea flag Program Usage</h1>
+    <div id="tipue_search_content">China flag Program Usage << <a href='China flag Program Usage.html'>Previous</a> <a href='w11.html'>Next</a> >> w11<br /><h1>Korea flag Program Usage</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// 繪製長方形
+int rectangleX = 330;    // 長方形左上角的 X 座標
+int rectangleY = 90;     // 長方形左上角的 Y 座標
+int rectangleWidth = 140; // 長方形的寬度
+int rectangleHeight = 170;// 長方形的高度
+
+// 設定線的寬度
+int lineWidth = 23;
+
+// 繪製線段
+gdImageSetThickness(im, lineWidth);
+gdImageRectangle(im, rectangleX, rectangleY, rectangleX + rectangleWidth, rectangleY + rectangleHeight, black);
+
+// 繪製斜線段
+gdImageSetThickness(im, lineWidth);
+gdImageLine(im, rectangleX, rectangleY, rectangleX + rectangleWidth, rectangleY + rectangleHeight, black);
+
+// 繪製斜線段
+gdImageSetThickness(im, lineWidth);
+gdImageLine(im, rectangleX - 35, rectangleY - 10, rectangleX + rectangleWidth - 35, rectangleY + rectangleHeight - 10, black);
+
+// 繪製斜線段
+gdImageSetThickness(im, lineWidth);
+gdImageLine(im, rectangleX - 70, rectangleY - 20, rectangleX + rectangleWidth - 70, rectangleY + rectangleHeight - 20, black);
+</pre>
+<p>這裡使用了 gdImageRectangle 函數來繪製一個填充的長方形。函數的原型如下：</p>
+<ol>
+<li class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">void gdImageRectangle(gdImagePtr im, int x1, int y1, int x2, int y2, int color);</li>
+<li>im 是一個指向 gdImage 結構的指針，表示畫布。</li>
+<li>(x1, y1) 是長方形左上角的座標。</li>
+<li>(x2, y2) 是長方形右下角的座標。</li>
+<li>color 是用來填充長方形的顏色。</li>
+<li>在這裡，我們設定了 rectangleX 和 rectangleY 作為長方形的左上角座標，rectangleWidth 和 rectangleHeight 分別是長方形的寬度和高度。我們使用 gdImageRectangle 函數畫出了一個填充的長方形。接著使用 gdImageLine 函數分別繪製了兩條斜線段，使其看起來像是旗幟。如果需要調整長方形的位置或大小，可以修改相應的變數值。</li>
+</ol>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">gdImageLine(im, rightTopX + 70, rightTopY - 20, rightTopX, rightTopY, black);
+</pre>
+<ol>
+<li>im: 表示目標圖像，也就是你要在其上進行繪製的圖像。</li>
+<li>rightTopX + 70, rightTopY - 20: 是線段的起點座標。rightTopX 和 rightTopY 是矩形右上角的座標，這裡將起點座標向右移動 70 單位，向上移動 20 單位。</li>
+<li>rightTopX, rightTopY: 是線段的終點座標，即矩形的右上角座標。</li>
+<li>black: 是線段的顏色。在 GD 庫中，顏色是使用 gdImageColorAllocate 函數來分配的。在這裡，black 表示事先分配好的黑色。</li>
+<li>因此，這行程式碼的作用是在圖像上從右上角的某點 (rightTopX, rightTopY) 開始，畫一條斜向左上方的線段，並且這條線段的長度是 70 單位（水平方向），20 單位（垂直方向）。</li>
+</ol>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">FILE *outputFile = fopen("./../images/korea_flag.png", "wb");
 if (outputFile == NULL) {
     fprintf(stderr, "Error opening the output file.\n");
@@ -168,7 +211,7 @@ gdImageDestroy(im);
 <ol>
 <li>gdImageDestroy 函數用於釋放 GD 圖片結構的記憶體。在這裡，它釋放了 im 指向的 GD 圖片結構所佔用的記憶體。這是為了避免內存洩漏，確保在程式執行完畢後釋放相應的資源。</li>
 </ol>
-<p><br/><br/></p><br />w7 << <a href='w7.html'>Previous</a> <a href='w11.html'>Next</a> >> w11</div>
+<p><br/><br/></p><br />China flag Program Usage << <a href='China flag Program Usage.html'>Previous</a> <a href='w11.html'>Next</a> >> w11</div>
         
     <!-- footer -->
       <div class="container">

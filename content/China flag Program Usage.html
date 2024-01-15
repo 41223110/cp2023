@@ -2,7 +2,7 @@
         <head>
         <title>cmsite</title>
         <meta charset="utf-8">
-<meta property="head" content="H1">
+<meta property="head" content="H2">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
         <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
@@ -142,27 +142,38 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w12 << <a href='w12.html'>Previous</a> <a href='心得.html'>Next</a> >> 心得<br /><h1>w13</h1>
-<p><span>近端建立:</span></p>
-<p><span>利用puttygen.exe取得key(按Generate)可以產生OpenSSH 格式的 public key。</span></p>
-<p><span><img alt="" height="301" src="./../images/01.png" width="400"/></span></p>
-<p><span>再將private key存起來，</span><span>存進tinyc/date/home_ipv6。類行為.ppk</span></p>
-<p><span><img alt="" height="299" src="./../images/2.png" width="400"/></span></p>
-<p><span>將OpenSSH 格式的 public key 放入Github SSH key</span></p>
-<p><span><img alt="" height="151" src="./../images/3.png" width="400"/></span></p>
-<p><span>接下來利用Putty(讓倉儲根<span>鑰匙連接</span><span>)，需打github.com才能進行改版的動作</span></span></p>
-<p><span><span><img alt="" height="374" src="./../images/5.png" width="400"/></span></span></p>
-<p><span><span>代理主機</span></span></p>
-<p><span><span><img alt="" height="376" src="./../images/6.png" width="400"/></span></span></p>
-<p><span><span>告訴他這是我.ppk檔</span></span></p>
-<p><span><span><img alt="" height="372" src="./../images/7.png" width="400"/></span></span></p>
-<p><span><span>再將登入檔匯出來代走，再命令列輸入regedit，存入隨身碟.reg檔</span></span></p>
-<p><span><span><img alt="" height="600" src="./../images/8.png" width="400"/></span></span></p>
-<p><span><span>最後一步克隆倉儲</span></span></p>
-<p><span><span><img alt="" height="114" src="./../images/9.png" width="400"/></span></span></p>
-<p><span><span>輸入cms就可開始維護網站，關掉按Ctrl+c</span></span></p>
-<p><span><span><img alt="" height="151" src="./../images/10.png" width="400"/></span></span></p>
-<p><span><span>將ip複製到網頁上就可打開</span></span></p><br />w12 << <a href='w12.html'>Previous</a> <a href='心得.html'>Next</a> >> 心得</div>
+    <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='Korea flag Program Usage.html'>Next</a> >> Korea flag Program Usage<br /><h1>China flag Program Usage</h1>
+<p><span>五芒星</span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+    gdPoint points[10];
+
+    // 計算星形的五個外點和五個內點
+    double outer_radius = size / 2;
+    double inner_radius = size / 6;
+    double angle = M_PI / 5.0;
+
+    for (int i = 0; i &lt; 10; i++) {
+        double radius = (i % 2 == 0) ? outer_radius : inner_radius;
+        double theta = rotation_angle + i * angle;
+        points[i].x = x + radius * cos(theta);
+        points[i].y = y + radius * sin(theta);
+    }
+
+    // 使用 gdImageFilledPolygon 繪製星形
+    gdImageFilledPolygon(img, points, 10, color);
+}
+</pre>
+<ol>
+<li>gdPoint points[10];：創建一個 gdPoint 類型的陣列 points 來存儲星星的十個頂點座標。</li>
+<li>double outer_radius = size / 2; 和 double inner_radius = size / 6;：定義星星的外半徑和內半徑。</li>
+<li>double angle = M_PI / 5.0;：計算星星的角度，因為五芒星有五個外點和五個內點，所以每個點之間的角度是 360 度除以 5。</li>
+<li>for (int i = 0; i &amp;lt; 10; i++) {：進入一個迴圈，迴圈 10 次，分別計算十個頂點的座標。</li>
+<li>double radius = (i % 2 == 0) ? outer_radius : inner_radius;：根據 i 的奇偶性，選擇使用外半徑或內半徑。</li>
+<li>double theta = rotation_angle + i * angle;：計算頂點的極坐標角度，加上旋轉角度。</li>
+<li>points[i].x = x + radius * cos(theta); 和 points[i].y = y + radius * sin(theta);：使用極坐標轉換公式，計算頂點的直角坐標。</li>
+<li>gdImageFilledPolygon(img, points, 10, color);：使用 gdImageFilledPolygon 函數繪製填充多邊形，即星星。</li>
+</ol>
+<p>這個 draw_star 函數使用數學計算的方式，根據外半徑和內半徑、角度以及旋轉角度，計算星星的十個頂點的座標，然後使用 GD 庫的函數將這些座標連接起來，形成一個填充的星星。</p><br />w7 << <a href='w7.html'>Previous</a> <a href='Korea flag Program Usage.html'>Next</a> >> Korea flag Program Usage</div>
         
     <!-- footer -->
       <div class="container">

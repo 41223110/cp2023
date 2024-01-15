@@ -1118,7 +1118,38 @@ if (outputFile == NULL) {
       return 0;
   }</pre>
 <p><img alt="" height="267" src="/images/korea_flag.png" width="400"/></p>
-<h2>Korea flag Program Usage</h2>
+<h2>China flag Program Usage</h2>
+<p><span>五芒星</span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {
+    gdPoint points[10];
+
+    // 計算星形的五個外點和五個內點
+    double outer_radius = size / 2;
+    double inner_radius = size / 6;
+    double angle = M_PI / 5.0;
+
+    for (int i = 0; i &lt; 10; i++) {
+        double radius = (i % 2 == 0) ? outer_radius : inner_radius;
+        double theta = rotation_angle + i * angle;
+        points[i].x = x + radius * cos(theta);
+        points[i].y = y + radius * sin(theta);
+    }
+
+    // 使用 gdImageFilledPolygon 繪製星形
+    gdImageFilledPolygon(img, points, 10, color);
+}
+</pre>
+<ol>
+<li>gdPoint points[10];：創建一個 gdPoint 類型的陣列 points 來存儲星星的十個頂點座標。</li>
+<li>double outer_radius = size / 2; 和 double inner_radius = size / 6;：定義星星的外半徑和內半徑。</li>
+<li>double angle = M_PI / 5.0;：計算星星的角度，因為五芒星有五個外點和五個內點，所以每個點之間的角度是 360 度除以 5。</li>
+<li>for (int i = 0; i &amp;lt; 10; i++) {：進入一個迴圈，迴圈 10 次，分別計算十個頂點的座標。</li>
+<li>double radius = (i % 2 == 0) ? outer_radius : inner_radius;：根據 i 的奇偶性，選擇使用外半徑或內半徑。</li>
+<li>double theta = rotation_angle + i * angle;：計算頂點的極坐標角度，加上旋轉角度。</li>
+<li>points[i].x = x + radius * cos(theta); 和 points[i].y = y + radius * sin(theta);：使用極坐標轉換公式，計算頂點的直角坐標。</li>
+<li>gdImageFilledPolygon(img, points, 10, color);：使用 gdImageFilledPolygon 函數繪製填充多邊形，即星星。</li>
+</ol>
+<p>這個 draw_star 函數使用數學計算的方式，根據外半徑和內半徑、角度以及旋轉角度，計算星星的十個頂點的座標，然後使用 GD 庫的函數將這些座標連接起來，形成一個填充的星星。</p><h2>Korea flag Program Usage</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">FILE *outputFile = fopen("./../images/korea_flag.png", "wb");
 if (outputFile == NULL) {
     fprintf(stderr, "Error opening the output file.\n");
@@ -1146,7 +1177,11 @@ gdImageDestroy(im);
 </ol>
 <p><br/><br/></p><h1>w11</h1>
 <p>如何快速設定電腦輔助設計室中的網路 - 採 IPv6 網路設定.</p>
-<p>請檢查隨身碟中的網路設定程式, 確認帶有可攜程式環境以及網路設定相關檔案.</p><h1>w12</h1>
+<p>請檢查隨身碟中的網路設定程式, 確認帶有可攜程式環境以及網路設定相關檔案.</p>
+<p><span>將其更改為個人IP序號</span></p>
+<p><span><img alt="" height="519" src="/images/004.png" width="400"/></span></p>
+<p><span>各學員在以上採多個不同方式維護個人與分組網站的過程, 可以在改版之前先行 git pull, 以減少合併的內容.</span></p>
+<p><span></span></p><h1>w12</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
