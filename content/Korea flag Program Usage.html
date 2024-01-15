@@ -142,25 +142,33 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">w2 << <a href='w2.html'>Previous</a> <a href='w4.html'>Next</a> >> w4<br /><h1>請逐行詳細說明程式用法</h1>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">int main(void) {
-</pre>
-<p><span>這裡是 </span><code>main</code><span> 函數的開始。</span><code>int</code><span> 表示 </span><code>main</code><span> 函數會返回一個整數值，而 </span><code>void</code><span> 表示 </span><code>main</code><span> 函數不接受任何參數。</span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    // 設定迴圈執行10次
-    for (int i = 0; i &lt; 10; i++) {
-</pre>
-<p><span>這行設定了一個 </span><code>for</code><span> 迴圈，</span><code>int i = 0</code><span> 初始化一個整數變數 </span><code>i</code><span>，</span><code>i &lt; 10</code><span> 是迴圈的條件，只有在 </span><code>i</code><span> 小於 10 時才會執行迴圈中的程式碼，</span><code>i++</code><span> 會在每次迴圈結束時將 </span><code>i</code><span> 遞增 1。</span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">        // 在每次迴圈中列印相同字串與 i 變數的值
-        printf("Hello World中文 - Line %d\n", i + 1);
-</pre>
-<p><span>這行使用 </span><code>printf</code><span> 函數在每次迴圈中輸出一個帶有格式的字串。</span><code>%d</code><span> 是一個格式控制符，表示將用整數替換它。</span><code>i + 1</code><span> 的值將替換 </span><code>%d</code><span>，所以每次迴圈會印出不同的行數。</span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    }
-</pre>
-<p><span>迴圈的結尾。</span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">    return 0;
+    <div id="tipue_search_content">w7 << <a href='w7.html'>Previous</a> <a href='w12.html'>Next</a> >> w12<br /><h1>Korea flag Program Usage</h1>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">FILE *outputFile = fopen("./../images/korea_flag.png", "wb");
+if (outputFile == NULL) {
+    fprintf(stderr, "Error opening the output file.\n");
+    return 1;
 }
+gdImagePngEx(im, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(im);
 </pre>
-<p><span>這是 </span><code>main</code><span> 函數的結尾，</span><code>return 0;</code><span> 表示 </span><code>main</code><span> 函數返回整數值 0，通常表示程序成功結束。這個值會傳遞給操作系統，作為程序的退出狀態碼。</span></p><br />w2 << <a href='w2.html'>Previous</a> <a href='w4.html'>Next</a> >> w4</div>
+<p><span>這個程式使用GD圖形庫生成了一個帶有特定幾何圖案的圖像，並將其保存為PNG檔案。</span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">gdImagePngEx(im, outputFile, 9);</pre>
+<ol>
+<li>gdImagePngEx 函數是 GD 圖形庫中的一個函數，用來將圖像保存為 PNG 檔案。</li>
+<li>im 是指向 GD 圖片結構的指標，代表要保存的圖像。</li>
+<li>outputFile 是一個指向已打開的檔案的指標，代表 PNG 檔案的輸出位置。</li>
+<li>9 是壓縮等級，範圍從 0 到 9，數字越大表示壓縮程度越高。在這裡，設置為 9 表示最高壓縮。</li>
+</ol>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">fclose(outputFile);</pre>
+<ol>
+<li>fclose 函數用於關閉已打開的檔案。在這裡，它將 outputFile 這個檔案指標所代表的檔案關閉，確保檔案資源被正確釋放。</li>
+</ol>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">gdImageDestroy(im)</pre>
+<ol>
+<li>gdImageDestroy 函數用於釋放 GD 圖片結構的記憶體。在這裡，它釋放了 im 指向的 GD 圖片結構所佔用的記憶體。這是為了避免內存洩漏，確保在程式執行完畢後釋放相應的資源。</li>
+</ol>
+<p><br/><br/></p><br />w7 << <a href='w7.html'>Previous</a> <a href='w12.html'>Next</a> >> w12</div>
         
     <!-- footer -->
       <div class="container">

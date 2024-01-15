@@ -1118,7 +1118,33 @@ if (outputFile == NULL) {
       return 0;
   }</pre>
 <p><img alt="" height="267" src="/images/korea_flag.png" width="400"/></p>
-<h1>w12</h1>
+<h2>Korea flag Program Usage</h2>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">FILE *outputFile = fopen("./../images/korea_flag.png", "wb");
+if (outputFile == NULL) {
+    fprintf(stderr, "Error opening the output file.\n");
+    return 1;
+}
+gdImagePngEx(im, outputFile, 9);
+fclose(outputFile);
+gdImageDestroy(im);
+</pre>
+<p><span>這個程式使用GD圖形庫生成了一個帶有特定幾何圖案的圖像，並將其保存為PNG檔案。</span></p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">gdImagePngEx(im, outputFile, 9);</pre>
+<ol>
+<li>gdImagePngEx 函數是 GD 圖形庫中的一個函數，用來將圖像保存為 PNG 檔案。</li>
+<li>im 是指向 GD 圖片結構的指標，代表要保存的圖像。</li>
+<li>outputFile 是一個指向已打開的檔案的指標，代表 PNG 檔案的輸出位置。</li>
+<li>9 是壓縮等級，範圍從 0 到 9，數字越大表示壓縮程度越高。在這裡，設置為 9 表示最高壓縮。</li>
+</ol>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">fclose(outputFile);</pre>
+<ol>
+<li>fclose 函數用於關閉已打開的檔案。在這裡，它將 outputFile 這個檔案指標所代表的檔案關閉，確保檔案資源被正確釋放。</li>
+</ol>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">gdImageDestroy(im)</pre>
+<ol>
+<li>gdImageDestroy 函數用於釋放 GD 圖片結構的記憶體。在這裡，它釋放了 im 指向的 GD 圖片結構所佔用的記憶體。這是為了避免內存洩漏，確保在程式執行完畢後釋放相應的資源。</li>
+</ol>
+<p><br/><br/></p><h1>w12</h1>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
 #include &lt;gd.h&gt;
 #include &lt;math.h&gt;
