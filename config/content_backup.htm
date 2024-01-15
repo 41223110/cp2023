@@ -172,13 +172,19 @@ int main() {
 <p><img alt="" height="200" src="/images/motion_plot.png" width="400"/></p><h1>w6</h1>
 <p>前述 Replit 平台環境中, 已經加入 Gnuplot 繪圖程式庫, 若循相同設定, 在 replit.nix 中加入 gd 繪圖程式庫以及 ncurses 終端機圖形介面程式庫, 則可結合 C/C++ 進行各式靜態與動態繪圖練習:</p>
 <p>replit.nix</p>
+<div class="line number1 index0 alt2">
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">{ pkgs }: {
-    deps = [
-      pkgs.gnuplot
-      pkgs.ncurses.dev
-      pkgs.gd
-    ];
+    deps = [
+      pkgs.gnuplot
+      pkgs.ncurses.dev
+      pkgs.gd
+    ];
 }</pre>
+</div>
+<p><img alt="" height="497" src="/images/002.png" width="400"/></p>
+<p><img alt="" height="515" src="/images/001.png" width="400"/></p>
+<p><img alt="" height="296" src="/images/003.png" width="400"/></p>
+<h2>Flag</h2>
 <pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">// https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China
 // 內政部國旗參考資料: https://www.moi.gov.tw/cp.aspx?n=10621
 // cc roc_flag_in_gd.c -lgd -lm to link with gd and math library
